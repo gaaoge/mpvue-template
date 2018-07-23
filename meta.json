@@ -14,6 +14,11 @@
       "type": "string",
       "required": true,
       "label": "author"
+    },
+    "appid": {
+      "type": "string",
+      "required": true,
+      "label": "appid"
     }
   },
   "skipInterpolation": ["build/**/*", "src/**/*", "static/**/*"]
