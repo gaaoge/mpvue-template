@@ -10,7 +10,7 @@
   "miniprogramRoot": "./dist/",
   "compileType": "miniprogram",
   "appid": "{{appid}}",
-  "projectname": "MPVueTemplate",
+  "projectname": "{{name}}",
   "condition": {
     "search": {
       "current": -1,
