@@ -1,0 +1,7 @@
+{
+  "plugins": {
+    "postcss-cssnext": {},
+    "postcss-plugin-px2rem": {},
+    "postcss-mpvue-wxss": {}
+  }
+}
