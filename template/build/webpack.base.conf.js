@@ -52,6 +52,13 @@ module.exports = merge.smart(alias, {
         exclude: /node_modules/
       },
       {
+        test: /\.css$/,
+        use: [
+          'css-loader',
+          'postcss-loader'
+        ]
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'file-loader',
         options: {
@@ -64,7 +71,7 @@ module.exports = merge.smart(alias, {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          outputPath: 'static/media/'
+          outputPath: '/static/media/'
         }
       },
       {
@@ -72,7 +79,7 @@ module.exports = merge.smart(alias, {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          outputPath: 'static/font/'
+          outputPath: '/static/font/'
         }
       }
     ]
