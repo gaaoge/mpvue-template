@@ -27,12 +27,7 @@ module.exports = merge.smart(alias, {
         test: /\.vue$/,
         loader: 'mpvue-loader',
         options: {
-          loaders: {
-            css: ExtractTextPlugin.extract({
-              use: ['css-loader', 'postcss-loader'],
-              fallback: 'style-loader'
-            })
-          },
+          extractCSS: true,
           transformToRequire: {
             audio: 'src'
           }
@@ -52,34 +47,41 @@ module.exports = merge.smart(alias, {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         use: [
-          'css-loader',
-          'postcss-loader'
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: '[name].[hash:10].[ext]',
+              outputPath: 'static/img/'
+            }
+          },
+          {
+            loader: 'tinify-loader',
+            options: {
+              apikey: 'ai3NQ23wq2pbQvy2JNylfuQMNJ99YAOZ',
+              cache: path.resolve('node_modules/.cache/tinify')
+            }
+          }
         ]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: '/static/img/'
-        }
-      },
-      {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'file-loader',
+        loader: 'url-loader',
         options: {
-          name: '[name].[ext]',
-          outputPath: '/static/media/'
+          limit: 10000,
+          name: '[name].[hash:10].[ext]',
+          outputPath: 'static/media/'
         }
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'file-loader',
+        loader: 'url-loader',
         options: {
-          name: '[name].[ext]',
-          outputPath: '/static/font/'
+          limit: 10000,
+          name: '[name].[hash:10].[ext]',
+          outputPath: 'static/font/'
         }
       }
     ]

@@ -1,6 +1,5 @@
 <template>
   <div class="app-logo">
-    <img src="../assets/logo.png" />
     <button open-type="share"></button>
   </div>
 </template>
@@ -17,17 +16,15 @@
 <style>
   .app-logo {
     position: relative;
-
-    & > img {
-      display: block;
-      width: 500px;
-      height: 400px;
-      margin: 0 auto;
-    }
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    background-image: url("../assets/logo.png");
+    background-size: cover;
 
     & > button {
       position: absolute;
-      left: 125px;
+      left: 0;
       top: 0;
       width: 500px;
       height: 400px;
