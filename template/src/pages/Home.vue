@@ -7,6 +7,7 @@
 
 <script>
   import AppLogo from 'components/Logo'
+  import { getStaticPath } from 'utils'
 
   export default {
     data () {
@@ -27,7 +28,7 @@
       return {
         title: 'hello mpvue!',
         path: '/pages/Home',
-        imageUrl: '/static/share-icon.png'
+        imageUrl: getStaticPath('share-icon.png')
       }
     }
   }

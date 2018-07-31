@@ -13,7 +13,10 @@ const app = express()
 app.use('/', express.static('dist'))
 app.use(middleware(webpack(dev), {
   publicPath: dev.output.publicPath,
-  quiet: true
+  quiet: true,
+  watchOptions: {
+    ignored: /node_modules/
+  }
 }))
 
 app.listen(3200, function () {

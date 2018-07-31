@@ -6,6 +6,7 @@ const pkg = require('../package.json')
 const prod = require('./webpack.prod.conf')
 
 const fs = require('fs')
+const del = require('del')
 const path = require('path')
 const chalk = require('chalk')
 const webpack = require('webpack')
@@ -21,11 +22,14 @@ webpack(prod, (err, stats) => {
     children: false
   }))
 
+  console.log(chalk.cyan('uploading...'))
   easeftp.addFile(['**/*'], {
     ...ftppass.easeftp,
     path: 'activity/' + pkg.name + '/static',
     exclude: ['js/**/*', 'css/**/*'],
-    debug: true,
     cwd: path.resolve('dist/static')
+  }).then((data)=>{
+    console.log(data.urls)
+    del(['dist/static/**', '!dist/static', '!dist/static/js/**', '!dist/static/css/**'])
   })
 })
