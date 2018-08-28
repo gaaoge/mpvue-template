@@ -1,7 +1,7 @@
-const options = {
+const stores = {
   state: {},
   mutations: {},
   actions: {}
 }
 
-export default options
+export default stores
