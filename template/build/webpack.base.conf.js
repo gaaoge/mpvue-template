@@ -9,6 +9,7 @@ const path = require('path')
 const webpack = require('webpack')
 const target = require('mpvue-webpack-target')
 const MPVueEntryPlugin = require('mpvue-entry')
+const MpVueAssetPlugin = require('webpack-mpvue-asset-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
@@ -19,7 +20,7 @@ module.exports = merge.smart(alias, {
   target,
   output: {
     path: path.resolve('dist'),
-    filename: 'static/js/[name].js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -88,18 +89,15 @@ module.exports = merge.smart(alias, {
   },
   plugins: [
     new MPVueEntryPlugin(),
+    new MpVueAssetPlugin(),
     new ExtractTextPlugin({
-      filename: 'static/css/[name].wxss'
+      filename: '[name].wxss'
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module) {
         return module.resource && /\.js$/.test(module.resource) && module.resource.indexOf('node_modules') >= 0
       }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor']
     }),
     new CopyWebpackPlugin([{
       from: 'static',

@@ -26,10 +26,9 @@ webpack(prod, (err, stats) => {
   easeftp.addFile(['**/*'], {
     ...ftppass.easeftp,
     path: 'activity/' + pkg.name + '/static',
-    exclude: ['js/**/*', 'css/**/*'],
     cwd: path.resolve('dist/static')
   }).then((data)=>{
     console.log(data.urls)
-    del(['dist/static/**', '!dist/static', '!dist/static/js/**', '!dist/static/css/**'])
+    del(['dist/static'])
   })
 })
