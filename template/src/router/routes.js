@@ -1,6 +1,6 @@
 module.exports = [
   {
-    path: 'pages/Home',
+    path: 'pages/home/Home',
     config: {
       navigationBarTitleText: '首页'
     }

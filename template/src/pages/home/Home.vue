@@ -1,20 +1,18 @@
 <template>
-  <div class="app-home">
+  <div class="home">
     <div class="hello" @click="hello">hello mpvue</div>
-    <app-logo></app-logo>
+    <home-logo></home-logo>
   </div>
 </template>
 
 <script>
-  import AppLogo from 'components/Logo'
-  import { getStaticPath } from 'utils'
+  import HomeLogo from './components/Logo'
+  import { getStaticPath } from '@/utils'
 
   export default {
-    data () {
-      return {}
-    },
+    name: 'home',
     components: {
-      AppLogo
+      HomeLogo
     },
     methods: {
       hello () {
@@ -35,7 +33,7 @@
 </script>
 
 <style>
-  .app-home {
+  .home {
     height: 100vh;
 
     & .hello {

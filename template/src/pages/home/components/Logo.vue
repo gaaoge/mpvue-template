@@ -1,12 +1,12 @@
 <template>
-  <div class="app-logo">
+  <div class="home-logo">
     <button open-type="share"></button>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'app-logo',
+    name: 'home-logo',
     data () {
       return {}
     }
@@ -14,7 +14,7 @@
 </script>
 
 <style>
-  .app-logo {
+  .home-logo {
     position: relative;
     width: 500px;
     height: 400px;
